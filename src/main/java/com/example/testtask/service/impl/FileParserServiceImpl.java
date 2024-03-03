@@ -22,6 +22,7 @@ public class FileParserServiceImpl implements FileParserService {
     @SneakyThrows
     @Override
     public StringBuilder parseOnLists(List<String> splitText, char delimiter, String carriage) {
+        if (Objects.equals(carriage, "") || carriage == null) throw new IllegalArgumentException();
         List<Section> strings = new ArrayList<>();
         List<Section> content = new ArrayList<>();
         List<Section> sections = new ArrayList<>();
@@ -42,7 +43,7 @@ public class FileParserServiceImpl implements FileParserService {
         List<Section> structure = new ArrayList<>();
         for (Section item : sections) {
             String sectionTitle = item.getTitle();
-            int curLevel = item.getLevel()-1;
+            int curLevel = item.getLevel();
             List<Section> sectionChildren = item.getSectionContent();
             String sectionName = removeDelimiters(sectionTitle, delimiter);
             if (sectionChildren.isEmpty()) {
@@ -68,6 +69,7 @@ public class FileParserServiceImpl implements FileParserService {
      * @return the contents and a structure of the newly parsed file.
      */
     public StringBuilder parseOnSB(List<String> splitText, char delimiter, String carriage) {
+        if (Objects.equals(carriage, "") || carriage == null) throw new IllegalArgumentException();
         int prevLevel = 0;
         StringBuilder textSB = new StringBuilder();
         StringBuilder structureSB = new StringBuilder();
@@ -112,7 +114,6 @@ public class FileParserServiceImpl implements FileParserService {
     }
 
     private StringBuilder getParsedText(List<Section> sections, String carriage){
-        if (Objects.equals(carriage, "") || carriage == null) throw new IllegalArgumentException();
         StringBuilder builder = new StringBuilder();
         for(Section s: sections){
             int level = s.getLevel();
@@ -128,7 +129,6 @@ public class FileParserServiceImpl implements FileParserService {
         return builder;
     }
     private StringBuilder getTextStructure(List<Section> sections, String carriage){
-        if (Objects.equals(carriage, "") || carriage == null) throw new IllegalArgumentException();
         StringBuilder builder = new StringBuilder();
         for(Section s: sections){
             int level = s.getLevel();
