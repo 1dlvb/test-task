@@ -55,7 +55,7 @@ public class FileParserServiceImpl implements FileParserService {
         StringBuilder parsedFileContent = new StringBuilder();
         parsedFileContent.append("----------TEXT---------- \n")
                 .append(getParsedText(strings, carriage))
-                .append("\n --------STRUCTURE-------- \n")
+                .append("\n--------STRUCTURE-------- \n")
                 .append(getTextStructure(structure, carriage));
         return parsedFileContent;
     }
@@ -86,7 +86,7 @@ public class FileParserServiceImpl implements FileParserService {
         StringBuilder parsedFileContent = new StringBuilder();
         parsedFileContent.append("----------TEXT---------- \n")
                 .append(textSB)
-                .append("\n --------STRUCTURE-------- \n")
+                .append("\n--------STRUCTURE-------- \n")
                 .append(structureSB);
         return parsedFileContent;
     }
