@@ -15,7 +15,7 @@ public class FileParserController {
 
     private final LoaderService loader;
 
-    @PostMapping("/parse-file")
+    @PostMapping("/get-parsed-file")
     public ResponseEntity<?> getParsedFile(@RequestParam("file") MultipartFile file) throws IOException {
         return loader.getParsedFile(file);
     }
